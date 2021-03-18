@@ -6,6 +6,7 @@ use App\Entity\Game;
 use App\Form\GameType;
 use App\Service\MyService;
 use App\Repository\GameRepository;
+use App\Service\PronosticManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -51,9 +52,10 @@ class GameController extends AbstractController
     /**
      * @Route("/{id}", name="game_show", methods="GET")
      */
-    public function show(Game $game): Response
+    public function show(Game $game, PronosticManager $pronosticManager): Response
     {
-      $bon_pronostic = $this->getDoctrine()->getRepository(Game::class)->findBonPronostic($game->getId());
+         
+      $bon_pronostic = $pronosticManager->getPronoByMatch($game);
 
       return $this->render('game/show.html.twig',
       ['game' => $game,

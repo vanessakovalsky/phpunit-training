@@ -7,6 +7,8 @@ Cet exercice a pour objectif :
 * Ici nous utilisons Guzzle comme client pour éxécuter des requêtes HTTP 
 * Déclarer une nouvelle classe de test APITest dans le dossier tests
 * Celle-ci contient : 
+```php
+
 <?php
 namespace App\tests;
 
@@ -36,13 +38,17 @@ public function testPOST()
     $data = json_decode($response->getBody(true), true);
     $this->assertArrayHasKey('nickname', $data);
 }
+```
+
 * Cet exemple nous montre à la fois comment tester l'envoi d'une requête API HTTP au format JSON.
 * Mais aussi lorsque l'on récupère la réponse, comment vérifier que les données attendues sont bien présentes.
 
 ## Et si on veut simuler la réponse avec un mock ?
 
 * Voici un autre exemple où l'on crée un mock pour simuler une réponse d'API : 
+
 ```php
+
 <?php
 require __DIR__ . "/../../vendor/autoload.php";
 

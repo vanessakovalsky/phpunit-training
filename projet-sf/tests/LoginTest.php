@@ -43,4 +43,9 @@ class LoginTest extends WebTestCase
         $this->assertResponseIsSuccessful();
 
     }
+
+    public function testLoginKO() : void 
+    {
+        $this->expectException(MyCustomException::class);
+    }
 }
